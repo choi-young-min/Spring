@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="board">
+  	<select id="getListAll" resultType="BoardVO">
+  		select * from s_board limit #{start}, #{cnt}
+  	</select>
+  	
+  	<select id="getBoardCount" resultType="float">
+  		select count(*) from s_board
+  	</select>
+  	
+  	<select id="getContent" resultType="BoardVO">
+  		select * from s_board where bno=#{bno}
+  	</select>
+  	
+  	<insert id="insertBoard" parameterType="BoardVO">
+  		insert into s_board(bno, title, content, w_id, regdate, updatedate) values(null,#{title},#{content},#{w_id},now(),now())
+  	</insert>
+  	
+  	<delete id="removeBoard" parameterType="int">
+  		delete from s_board where bno=#{bno}
+  	</delete>
+  	
+  	<update id="updateBoard" parameterType="BoardVO">
+  		update s_board set title=#{title}, content=#{content}, updatedate=now() where bno=#{bno}
+  	</update>
+  </mapper>
