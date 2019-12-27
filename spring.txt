@@ -1,0 +1,114 @@
+ORM : object-relational mapping
+객체(OOP)와 관계(database)와의 설정
+객체가 테이블이 되도록 매핑시켜주는것
+
+EJB : enterprise javaBeans 기업환경의 시스템을
+구현하기 위한 서버 컴포넌트 모델
+
+POJO : java Object, 프레임워크를 따르지 않음 
+복잡성의 해결을 통한 생산성 향상
+EJB의 Bean에 비해 훌륭한 객체 단위
+
+spring 3대 원칙
+1. PSA : Portable Service Abstraction 
+환경의 변화와 관계없이 일관된 방식의 기술로의
+접근 환경을 제공하려는 추상화 구조
+spring 에서 동작할 수 있는 library 들을 pojo
+원칙을 지키게끔 psa 형태의 추상화가 되어있음을
+의미함
+
+2. IOC 프레임 워크가 객체 생성 및 관리 Inversion of control
+
+
+3. DI 의존성 주입 xml 방식(생성자,setter방식)
+object들의 life cycle을 가지고 있음
+DI 방식
+1. field injection 권장X
+2. Setter Injection 
+3.Constructor Injection
+
+jdbc,sql Mapper(mybatis) 불편함 해결
+JPA(java persistence api) 자바 orm 기술에 대한 api 표준명세
+->hibernate (한국에서 잘안씀)
+->sql생성을 안해도 됨, 메서드 호출만으로 쿼리가 수행
+sql 반복 작업x, 생산성 향상
+
+
+
+AOP(Aspect Of Control) : 핵심 로직 개발시
+transaction 지원이나 logging,Security 등 시스템적 관심사에 신경쓸 필요가 없음
+Transaction 관리 : java object들에 대한 트랜잭션을
+지원하지만 결코 j2ee와 같은 환경에 얽매이지 않는다.
+
+scope(유효범위) : 변수와 매개변수의 접근성과 생존 기간
+Spring framework 5개의 Scope
+1. singleton : Spring 컨테이너 하나당 한개의 Bean만 생성되고 해당 Bean이 요청될 때마다 모든 객체는 한객체를 가리킨다.
+(default) @Autowired를 통해 간편하게 사용 가능
+
+2. prototype : 하나의 Bean은 사용할 때마다 새로운 객체를 할당하여 사용하게 된다.
+3. Request : HTTP request가 상주하는 Spring Application Context 내에서만 유효한 객체를 생성하고 재사용한다.
+(web-aware)
+4. Session : Bean을 해당 세션이 가진 Application Context에 바인딩한다. (web-aware)
+5. Global Session : HTTP 세션 전역에서 같은 Bean을 사용 가능하다.(web-aware)
+
+
+legacy
+lombok : 어노테이션 하나로 자동으로 바이트코드를 만들어줌
+(필수 라이브러리)
+boot : tomcat 내장, 최소한의 설정 
+dependency를 아주 간단하게 가능
+
+src/main/java 개발하는 java코드
+src/main/resources 서버가 실행될 때 필요한 파일들의 경로
+src/test/java 테스트 전용 경로
+src/test/resources 테스트 시에만 사용되는 파일의 경로
+
+web.xml 웹 애플리케이션의 실행 환경에 관련된 각종 설정
+정보가 담겨있는 파일이다.
+servlet-mapping url-pattern
+
+스프링 설정 파일
+servlet-context.xml
+HandlerMapping,HandlerAdapter의 작업이 진행
+<context:component-scan base-package="패키지명"/>
+@Controller, @Repository, @Service, @Component 어노테이션이
+사용된 클래스를 자동으로 스캔하여 빈으로 등록한다.
+<annotation-driven /> 
+URL 매핑가능 @RequestMapping에 지정된 url로 브라우저의 요청
+url이 매핑되게 된다.
+
+maven(pom.xml)
+자바 프로젝트의 빌드를 자동화 해주는 빌드 툴이다.
+자바 소스를 compile 하고 package해서 deploy하는
+일을 자동화 해주는 것이다.
+pom.xml 자바 프로젝트에 빌드 툴 maven 프로젝트 내 빌드
+옵션을 설정 하는 부분
+
+root-context.xml
+views jsp 파일경로
+pom.xml maven 설정 파일
+
+1. web.xml
+1)filter처리후
+2)DispatcherServlet
+3)Servlet-context.xml로 전달
+
+2.servlet-context.xml
+빈등록,url매핑
+
+3.class 실행
+
+4.servlet-context.xml
+view의 값을 DispatcherServlet을 전달
+
+5.web.xml
+jsp파일 응답
+
+
+
+
+
+
+
+
+
